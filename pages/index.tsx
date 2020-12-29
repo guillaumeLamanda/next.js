@@ -59,7 +59,8 @@ const Index = () => {
 };
 
 export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+  const { schema } = await import("../lib/schema");
+  const apolloClient = initializeApollo(undefined, undefined, schema);
 
   await apolloClient.query({
     query: ViewerDocument,
